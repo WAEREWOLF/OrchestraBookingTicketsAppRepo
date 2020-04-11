@@ -1,0 +1,34 @@
+﻿
+@{
+     ViewData["Title"] = "Gallery";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<h2>Gallery</h2>
+<link rel="stylesheet" href="~/css/Button.css">
+<div>
+    <input type="button" value="Next" class="btn success" style="float: right ;" onclick="location.href='@Url.Action("Gallery2", "Home")'" />
+    <input type="button" value="Back" class="btn success" onclick="location.href='@Url.Action("Index", "Home")'" />
+</div>
+<div class="jumbotron">
+    <h1>Oltenia Philarmonic exterior</h1>
+    <p class="lead">Oltenia Philarmonic exterior was improved and redecorated with brown and beige columns, keeping the original architecture and design</p>
+    <img src="@Url.Content("~/images/filarmonica.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+    <img src="@Url.Content("~/images/filarmonica2.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+    <img src="@Url.Content("~/images/filarmonica3.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+    <img src="@Url.Content("~/images/filarmonica4.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+</div>
+
+<div class="jumbotron">
+    <h1>Oltenia Philarmonic interior</h1>
+    <p class="lead">Oltenia Philarmonic has a classic decoration, with an unique echo and a capacity of 500 persons</p>
+    <img src="@Url.Content("~/images/interior1.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+    <img src="@Url.Content("~/images/interior2.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+    <img src="@Url.Content("~/images/interior3.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+    <img src="@Url.Content("~/images/interior4.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+</div>
+
+<div>
+    <input type="button" value="Next" class="btn success" style="float: right;" onclick="location.href='@Url.Action("Gallery2", "Home")'" />
+    <input type="button" value="Back" class="btn success" onclick="location.href='@Url.Action("Index", "Home")'" />
+</div>

@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewData["Title"] = "BookSeats";
+}
+
+<h2>Book Seat/s to the selected Orchestra</h2>
+<link rel="stylesheet" href="~/css/Button.css">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .seat {
+            height: 30px;
+            width: 30px;
+            border: 1px solid gray;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .walk {
+            padding-left: 30px;
+        }
+
+        #driver {
+            background-color: gray;
+            height: 30px;
+            border-radius: 50%;
+        }
+    </style>
+
+
+
+</head>
+    <br /><br />
+<div style="border:10px solid gray; width:440px;">
+    <table>
+        <tr>
+            <td colspan="7"></td>
+            <td align="center"> <div id="driver"></div> </td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+        <tr>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td class="walk">  </td>
+            <td><div class="seat"></div> </td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+            <td><div class="seat"></div></td>
+        </tr>
+
+    </table>
+</div>
+<br />
+<div>
+    <input type="button" value="Back" class="btn success" onclick="location.href='@Url.Action("Index", "Orchestras")'" />
+    <input type="button" value="Confirm" class="btn success" onclick="location.href='@Url.Action("Index", "Home")'" />
+</div>
+

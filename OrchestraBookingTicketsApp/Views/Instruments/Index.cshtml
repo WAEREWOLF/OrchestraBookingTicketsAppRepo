@@ -1,0 +1,55 @@
+﻿@model IEnumerable<OrchestraBookingTicketsApp.Models.Instrument>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Instruments in the orchestra</h2>
+<link rel="stylesheet" href="~/css/Button.css">
+<style>
+    tr:nth-child(even) {
+        background-color: #c89797;
+    }
+</style>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" BORDERCOLOR=#c89797>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orchestra)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Orchestra.OrchestraId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InstrumentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.InstrumentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.InstrumentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <input type="button" value="Back" class="btn success" onclick="location.href='@Url.Action("Index", "Orchestras")'" />
+</div>

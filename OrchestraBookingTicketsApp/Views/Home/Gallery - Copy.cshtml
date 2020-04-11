@@ -1,0 +1,30 @@
+﻿
+@{
+     ViewData["Title"] = "Gallery";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+<h2>Gallery</h2>
+
+<div class="jumbotron">
+    <h1>Oltenia Philarmonic exterior</h1>
+    <p class="lead">Oltenia Philarmonic exterior was improved and redecorated with brown and beige columns, keeping the original architecture and design</p>
+    <img src="@Url.Content("~/images/filarmonica.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+    <img src="@Url.Content("~/images/filarmonica2.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+    <img src="@Url.Content("~/images/filarmonica3.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+    <img src="@Url.Content("~/images/filarmonica4.jpg")" alt="IMAGES" style="width: 300px; height: 400px;" />
+</div>
+
+<div class="jumbotron">
+    <h1>Oltenia Philarmonic interior</h1>
+    <p class="lead">Oltenia Philarmonic has a classic decoration, with an unique echo and a capacity of 500 persons</p>
+    <img src="@Url.Content("~/images/interior1.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+    <img src="@Url.Content("~/images/interior2.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+    <img src="@Url.Content("~/images/interior3.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+    <img src="@Url.Content("~/images/interior4.jpg")" alt="IMAGES" style="width: 400px; height: 300px;" />
+</div>
+
+<div>
+    <button type="button" class="success" style="float: right;">Next Page</button>
+    <input type="button" value="Return" onclick="location.href='@Url.Action("Index", "Home")'" />
+</div>
