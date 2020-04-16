@@ -1,0 +1,46 @@
+﻿@model OrchestraBookingTicketsApp.ViewModels.OrchestraModel.AddOrchestraViewModel
+@{
+    ViewData["Title"] = "AddOrchestra";
+}
+
+<h1>Add Orchestra</h1>
+<link rel="stylesheet" href="~/css/Button.css">
+<form asp-action="AddOrchestra" method="post">
+
+    <div class="row">
+        <div class="col-2">
+            Orchestra Title
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="text" asp-for="Title" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Orchestra Date
+        </div>
+        <div class="col-10">
+            <textarea class="form-control" asp-for="Date">
+    
+            </textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Orchestra ticket price
+        </div>
+        <div class="col-10">
+            <textarea class="form-control" asp-for="Price">
+    
+            </textarea>
+        </div>
+    </div>
+    <br /><br />
+    <div>
+        <button type="submit" class="btn success">Save</button>
+        <input type="button" value="Back" class="btn success" style="float: right;" onclick="location.href='@Url.Action("Index", "Orchestras")'" />
+    </div>
+</form>
+
+
+
