@@ -10,5 +10,6 @@ namespace OrchestraBookingTicketsApp.Abstractions
     {
         IEnumerable<Orchestra> GetOrchestras();
         IEnumerable<Orchestra> GetOrchestrasByDate(DateTime dateTime);
+        Orchestra GetOrchestraById(int orchestraId);
     }
 }

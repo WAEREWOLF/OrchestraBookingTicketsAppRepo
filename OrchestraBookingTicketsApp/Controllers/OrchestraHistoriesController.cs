@@ -44,6 +44,24 @@ namespace OrchestraBookingTicketsApp.Controllers
             return View(historyOrchestra);
         }
 
+        [HttpGet]
+        public IActionResult AddOrchestraHistory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddOrchestraHist([FromForm]AddOrchestraHistoryViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            orchestraHistoryService.AddHistoryOrchestra(model.Status, model.SeatNumber, model.Rating);
+            return Redirect(Url.Action("Index", "OrchestraHistories"));
+
+        }
 
         [HttpPost]      
         public IActionResult DeleteOrchestraHistory(int id)

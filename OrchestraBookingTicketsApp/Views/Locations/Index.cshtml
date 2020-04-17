@@ -4,11 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Orchestra location</h2>
+<h2>All locations</h2>
 
-<p>
-    <a href='@Url.Action("AddLocation", "Locations")'>Add Location</a>
-</p>
+
 <link rel="stylesheet" href="~/css/Button.css">
 <style>
     tr:nth-child(even) {
@@ -25,7 +23,7 @@
                 @Html.DisplayName("Country")
             </th>
             <th>
-                @Html.DisplayName("Address")
+                @Html.DisplayName("AddressQ")
             </th>          
         </tr>
     </thead>

@@ -30,8 +30,12 @@ namespace OrchestraBookingTicketsApp.Services
 
         public OrchestraHistory GetOrchestraHistoryBy(int orchestraHistoryId)
         {
-            return orchestraHistoryRepository.GetOrchestraHistoryById(orchestraHistoryId);
-           
+            return orchestraHistoryRepository.GetOrchestraHistoryById(orchestraHistoryId);           
+        }
+
+        public void AddHistoryOrchestra(string status, int seatNumber, int rating)
+        {
+            orchestraHistoryRepository.Add(new OrchestraHistory() { Status = status, SeatNumber = seatNumber, Rating = rating});
         }
     }
 }

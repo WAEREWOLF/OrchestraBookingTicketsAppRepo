@@ -19,7 +19,7 @@
                 @Html.DisplayName("Title")
             </th>
             <th>
-                @Html.DisplayName("Name")
+                @Html.DisplayName("Date")
             </th>
             <th>
                 @Html.DisplayName("Price")
@@ -47,11 +47,13 @@
                 @Html.Label("$")
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.OrchestraId">Edit</a> |                
-                <a asp-action="Delete" asp-route-id="@item.OrchestraId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.OrchestraId">Edit</a> |
+                <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">Delete</a>                
             </td>
             <td>
-                <input type="button" value="Details" class="btn success" onclick="location.href='@Url.Action("Details/"+ item.OrchestraId, "Orchestras")'" />         
+                <a asp-action="Details" asp-route-id="@item.OrchestraId" asp-controller="Locations">
+                    <input type="submit" class="btn success" value="Details" />
+                </a>         
             </td>
             <td>
                 <input type="button" value="Book Now" class="btn success" onclick="location.href='@Url.Action("BookSeats", "Home")'" />
@@ -61,4 +63,3 @@
     </tbody>
 </table>
 
-<input type="button" value="Locations" class="btn success" onclick="location.href='@Url.Action("Index", "Locations")'" />

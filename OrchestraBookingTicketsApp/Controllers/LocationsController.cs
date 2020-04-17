@@ -28,7 +28,7 @@ namespace OrchestraBookingTicketsApp.Controllers
         {
             try
             {
-                
+
                 var locations = locationService.GetLocations();
 
                 return View(new LocationViewModel { Locations = locations });
@@ -39,20 +39,27 @@ namespace OrchestraBookingTicketsApp.Controllers
             }
         }
         [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var locations = locationService.GetLocationByOrchestraId(id);
+            return View(locations);
+        }
+
+        [HttpGet]
         public IActionResult AddLocation()
         {
+            
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddLocation([FromForm]AddLocationViewModel model)
+        public IActionResult AddLocation([FromForm]AddLocationViewModel model, int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
-            }
-            
-            locationService.AddLocation(model.City, model.Country, model.Address, model.OrchestraId);
+            }            
+            locationService.AddLocation(model.City, model.Country, model.Address, id);
             return Redirect(Url.Action("Index", "Locations"));
 
         }

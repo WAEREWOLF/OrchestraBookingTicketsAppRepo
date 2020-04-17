@@ -35,5 +35,11 @@ namespace OrchestraBookingTicketsApp.Services
         {
             orchestraRepository.Add(new Orchestra() { Title = title, Date = date, Price = price});
         }
+
+        public void DeleteOrchestra(int orchestraId)
+        {
+            var orchestraItem = orchestraRepository.GetOrchestraById(orchestraId);
+            orchestraRepository.Delete(orchestraItem);
+        }
     }
 }

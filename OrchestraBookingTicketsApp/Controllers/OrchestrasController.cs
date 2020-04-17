@@ -14,11 +14,11 @@ namespace OrchestraBookingTicketsApp.Controllers
 {
     public class OrchestrasController : Controller
     {
-        private readonly OrchestraService orchestraService;
+        private readonly OrchestraService orchestraService;        
 
         public OrchestrasController(OrchestraService orchestraService)
         {
-            this.orchestraService = orchestraService;
+            this.orchestraService = orchestraService;            
         }
 
         public ActionResult Index()
@@ -41,6 +41,12 @@ namespace OrchestraBookingTicketsApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult DeleteOrchestra()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult AddOrchestra([FromForm]AddOrchestraViewModel model)
         {
@@ -52,6 +58,17 @@ namespace OrchestraBookingTicketsApp.Controllers
             orchestraService.AddOrchestra(model.Title, model.Date, model.Price);
             return Redirect(Url.Action("Index", "Orchestras"));
 
+        }        
+
+        [HttpPost]
+        public IActionResult DeleteOrchestra(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            orchestraService.DeleteOrchestra(id);
+            return Redirect(Url.Action("Index", "Orchestras"));
         }
     }
 }

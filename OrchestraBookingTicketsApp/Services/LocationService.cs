@@ -20,7 +20,7 @@ namespace OrchestraBookingTicketsApp.Services
 
         public IEnumerable<Models.Location> GetLocationByOrchestraId(int orchestraId)
         {
-            if(orchestraId > 0)
+            if(orchestraId < 0)
             {
                 throw new Exception("Invalid Id");
             }

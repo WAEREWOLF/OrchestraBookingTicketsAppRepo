@@ -35,19 +35,10 @@
             </textarea>
         </div>
     </div>
-    <div class="row">
-        <div class="col-2">
-            Orchestra Id
-        </div>
-        <div class="col-10">
-            <textarea class="form-control" asp-for="OrchestraId">
     
-            </textarea>
-        </div>    
-    </div>
     <br />
     <div>
-        <button type="submit" class="btn success">Save</button>
-        <input type="button" value="Back" class="btn success" style="float: right;" onclick="location.href='@Url.Action("Index", "Locations")'" />
+        <button type="submit" class="btn success" asp-route="Locations/Details">Save</button>
+        <input type="button" value="Back" class="btn success" style="float: right;" onclick="location.href='@Url.Action("Details", "Locations")'" />
     </div>
 </form>

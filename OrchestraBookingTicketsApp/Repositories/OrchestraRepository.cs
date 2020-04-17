@@ -15,6 +15,12 @@ namespace OrchestraBookingTicketsApp.Repositories
 
         }
 
+        public Orchestra GetOrchestraById(int orchestraId)
+        {
+            var orchestra = dbContext.Orchestras.Where(o => o.OrchestraId == orchestraId).SingleOrDefault();
+            return orchestra;
+        }
+
         public IEnumerable<Orchestra> GetOrchestras()
         {
             var orchestras = dbContext.Orchestras.AsEnumerable();
