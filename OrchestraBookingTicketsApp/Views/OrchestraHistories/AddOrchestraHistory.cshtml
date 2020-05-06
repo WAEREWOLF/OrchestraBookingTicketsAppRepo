@@ -1,0 +1,44 @@
+﻿@model OrchestraBookingTicketsApp.ViewModels.OrchestraHistoryModel.AddOrchestraHistoryViewModel
+@{
+    ViewData["Title"] = "AddOrchestraHistory";
+}
+
+<h1>Add Orchestra History</h1>
+<link rel="stylesheet" href="~/css/Button.css">
+<form asp-action="AddOrchestraHist" method="post">
+
+    <div class="row">
+        <div class="col-2">
+            Status
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="text" asp-for="Status" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Seat Number
+        </div>
+        <div class="col-10">
+            <textarea class="form-control" asp-for="SeatNumber">
+    
+            </textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Rating
+        </div>
+        <div class="col-10">
+            <textarea class="form-control" asp-for="Rating">
+    
+            </textarea>
+        </div>
+    </div>
+
+    <br />
+    <div>
+        <button type="submit" class="btn success" >Save</button>
+        <input type="button" value="Back" class="btn success" style="float: right;" onclick="location.href='@Url.Action("Index", "OrchestraHistories")'" />
+    </div>
+</form>

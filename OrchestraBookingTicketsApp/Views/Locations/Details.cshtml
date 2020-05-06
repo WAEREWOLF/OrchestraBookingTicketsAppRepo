@@ -1,42 +1,57 @@
-﻿@model OrchestraBookingTicketsApp.Models.Location
-
+﻿@model IEnumerable<OrchestraBookingTicketsApp.Models.Location>
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Orchestra location</h2>
 
+
+<link rel="stylesheet" href="~/css/Button.css">
+<style>
+    tr:nth-child(even) {
+        background-color: #c89797;
+    }
+</style>
+<table class="table" BORDERCOLOR=#c89797>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("City")
+            </th>
+            <th>
+                @Html.DisplayName("Country")
+            </th>
+            <th>
+                @Html.DisplayName("Address")
+            </th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    <a asp-action="AddLocation" asp-route-id="@item.OrchestraId" asp-controller="Locations" >Create New</a>
+
+                </td>
+                
+            </tr>
+
+
+
+        }
+    </tbody>
+</table>
 <div>
-    <h4>Location</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Orchestra)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Orchestra.OrchestraId)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.LocationId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <input type="button" value="Back" class="btn success" onclick="location.href='@Url.Action("Index", "Orchestras")'" />
 </div>

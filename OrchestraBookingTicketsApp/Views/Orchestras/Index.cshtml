@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OrchestraBookingTicketsApp.Models.Orchestra>
+﻿@model OrchestraBookingTicketsApp.ViewModels.OrchestraModel.OrchestraViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -10,19 +10,19 @@
     tr:nth-child(even) {background-color: #c89797;}    
 </style>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddOrchestra">Add Orchestra</a>
 </p>
 <table class="table"  BORDERCOLOR=#c89797>
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayName("Title")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayName("Date")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayName("Price")
             </th>
             <th>
             </th>
@@ -33,7 +33,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Orchestras)
         {
         <tr>
             <td>
@@ -47,11 +47,13 @@
                 @Html.Label("$")
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.OrchestraId">Edit</a> |                
-                <a asp-action="Delete" asp-route-id="@item.OrchestraId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.OrchestraId">Edit</a> |
+                <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">Delete</a>                
             </td>
             <td>
-                <input type="button" value="Details" class="btn success" onclick="location.href='@Url.Action("Details/"+ item.OrchestraId, "Orchestras")'" />         
+                <a asp-action="Details" asp-route-id="@item.OrchestraId" asp-controller="Locations">
+                    <input type="submit" class="btn success" value="Details" />
+                </a>         
             </td>
             <td>
                 <input type="button" value="Book Now" class="btn success" onclick="location.href='@Url.Action("BookSeats", "Home")'" />
@@ -60,3 +62,4 @@
         }
     </tbody>
 </table>
+

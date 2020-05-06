@@ -130,7 +130,7 @@ namespace OrchestraBookingTicketsApp.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int?>("OrchestraHistoryId");
+                    b.Property<int?>("OrchestraHistoriesOrchestraHistoryId");
 
                     b.Property<int>("Price");
 
@@ -138,7 +138,7 @@ namespace OrchestraBookingTicketsApp.Migrations
 
                     b.HasKey("OrchestraId");
 
-                    b.HasIndex("OrchestraHistoryId");
+                    b.HasIndex("OrchestraHistoriesOrchestraHistoryId");
 
                     b.ToTable("Orchestras");
                 });
@@ -155,11 +155,11 @@ namespace OrchestraBookingTicketsApp.Migrations
 
                     b.Property<string>("Status");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int?>("UsersUserId");
 
                     b.HasKey("OrchestraHistoryId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UsersUserId");
 
                     b.ToTable("OrchestraHistories");
                 });
@@ -176,8 +176,6 @@ namespace OrchestraBookingTicketsApp.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<string>("Password");
-
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
@@ -186,7 +184,7 @@ namespace OrchestraBookingTicketsApp.Migrations
             modelBuilder.Entity("OrchestraBookingTicketsApp.Models.Award", b =>
                 {
                     b.HasOne("OrchestraBookingTicketsApp.Models.LeadArtist", "Artists")
-                        .WithMany("Award")
+                        .WithMany("Awards")
                         .HasForeignKey("LeadArtistId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -202,7 +200,7 @@ namespace OrchestraBookingTicketsApp.Migrations
             modelBuilder.Entity("OrchestraBookingTicketsApp.Models.Instrument", b =>
                 {
                     b.HasOne("OrchestraBookingTicketsApp.Models.Orchestra", "Orchestra")
-                        .WithMany("Instrument")
+                        .WithMany("Instruments")
                         .HasForeignKey("OrchestraId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -218,23 +216,23 @@ namespace OrchestraBookingTicketsApp.Migrations
             modelBuilder.Entity("OrchestraBookingTicketsApp.Models.Location", b =>
                 {
                     b.HasOne("OrchestraBookingTicketsApp.Models.Orchestra", "Orchestra")
-                        .WithMany("Location")
+                        .WithMany("Locations")
                         .HasForeignKey("OrchestraId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("OrchestraBookingTicketsApp.Models.Orchestra", b =>
                 {
-                    b.HasOne("OrchestraBookingTicketsApp.Models.OrchestraHistory", "OrchestraHistory")
-                        .WithMany("Orchestra")
-                        .HasForeignKey("OrchestraHistoryId");
+                    b.HasOne("OrchestraBookingTicketsApp.Models.OrchestraHistory", "OrchestraHistories")
+                        .WithMany("Orchestras")
+                        .HasForeignKey("OrchestraHistoriesOrchestraHistoryId");
                 });
 
             modelBuilder.Entity("OrchestraBookingTicketsApp.Models.OrchestraHistory", b =>
                 {
-                    b.HasOne("OrchestraBookingTicketsApp.Models.User", "User")
-                        .WithMany("OrchestraHistory")
-                        .HasForeignKey("UserId");
+                    b.HasOne("OrchestraBookingTicketsApp.Models.User", "Users")
+                        .WithMany("OrchestraHistories")
+                        .HasForeignKey("UsersUserId");
                 });
 #pragma warning restore 612, 618
         }

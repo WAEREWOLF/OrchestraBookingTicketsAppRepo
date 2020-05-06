@@ -1,14 +1,12 @@
-﻿@model IEnumerable<OrchestraBookingTicketsApp.Models.Location>
+﻿@model OrchestraBookingTicketsApp.ViewModels.LocationModel.LocationViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Orchestra location</h2>
+<h2>All locations</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <link rel="stylesheet" href="~/css/Button.css">
 <style>
     tr:nth-child(even) {
@@ -19,23 +17,18 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayName("City")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Country)
+                @Html.DisplayName("Country")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Orchestra)
-            </th>
-            <th></th>
-            <th></th>
+                @Html.DisplayName("AddressQ")
+            </th>          
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Locations)
         {
             <tr>
                 <td>
@@ -46,18 +39,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Orchestra.OrchestraId)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.LocationId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.LocationId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.LocationId">Delete</a>
-                </td>
-                <td>
-                    <input type="button" value="Facilities" class="btn success" onclick="location.href='@Url.Action("Index", "BuildingFacilities")'" />
-                </td>
+                </td>                
             </tr>
         }
     </tbody>

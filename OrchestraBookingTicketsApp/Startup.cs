@@ -13,6 +13,9 @@ using OrchestraBookingTicketsApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OrchestraBookingTicketsApp.DataAccess;
+using OrchestraBookingTicketsApp.Abstractions;
+using OrchestraBookingTicketsApp.Repositories;
+using OrchestraBookingTicketsApp.Services;
 
 namespace OrchestraBookingTicketsApp
 {
@@ -37,13 +40,35 @@ namespace OrchestraBookingTicketsApp
             var connection = @"Server=(localdb)\mssqllocaldb;Database=TestEntityFrameworkDb;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<OrchestraContext>(options =>
                 options.UseSqlServer(connection));
-            
-            services.AddDbContext<OrchestraContext>(options =>
+
+            //services.AddDbContext<OrchestraContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddEntityFrameworkStores<OrchestraContext>();
+            //
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("connection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<OrchestraContext>(
+              options =>
+              options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection"))
+               );
+
             services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<OrchestraContext>();
-                
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //add repo
+            services.AddScoped<IOrchestraRepository, OrchestraRepository>();
+            services.AddScoped<IOrchestraHistoryRepository, OrchestraHistoryRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
+            //add services
+            services.AddScoped<OrchestraService>();
+            services.AddScoped<OrchestraHistoryService>();
+            services.AddScoped<LocationService>();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

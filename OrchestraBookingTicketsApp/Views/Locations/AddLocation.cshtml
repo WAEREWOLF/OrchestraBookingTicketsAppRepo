@@ -1,0 +1,44 @@
+﻿@model OrchestraBookingTicketsApp.ViewModels.LocationModel.AddLocationViewModel
+@{
+    ViewData["Title"] = "AddLocation";
+}
+
+<h1>Add Location</h1>
+<link rel="stylesheet" href="~/css/Button.css">
+<form asp-action="AddLocation" method="post">
+
+    <div class="row">
+        <div class="col-2">
+            Location City
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="text" asp-for="City" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Location Country
+        </div>
+        <div class="col-10">
+            <textarea class="form-control" asp-for="Country">
+    
+            </textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Location Address
+        </div>
+        <div class="col-10">
+            <textarea class="form-control" asp-for="Address">
+    
+            </textarea>
+        </div>
+    </div>
+    
+    <br />
+    <div>
+        <button type="submit" class="btn success" asp-route="Locations/Details">Save</button>
+        <input type="button" value="Back" class="btn success" style="float: right;" onclick="location.href='@Url.Action("Details", "Locations")'" />
+    </div>
+</form>
