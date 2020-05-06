@@ -61,7 +61,6 @@ namespace OrchestraBookingTicketsApp.Controllers
             }            
             locationService.AddLocation(model.City, model.Country, model.Address, id);
             return Redirect(Url.Action("Index", "Locations"));
-
         }
     }
 }

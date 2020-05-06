@@ -57,7 +57,6 @@ namespace OrchestraBookingTicketsApp.Controllers
 
             orchestraService.AddOrchestra(model.Title, model.Date, model.Price);
             return Redirect(Url.Action("Index", "Orchestras"));
-
         }        
 
         [HttpPost]
