@@ -15,23 +15,17 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
-    {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+    {               
         private readonly ILogger<RegisterModel> _logger;
         //private readonly IEmailSender _emailSender;
         private  UserService _userService;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
+           // IEmailSender emailSender,
             UserService userService
             )
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
+        {  
             _logger = logger;
             _userService = userService;
             //_emailSender = emailSender;
@@ -74,7 +68,7 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
                 //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
                 var user = _userService.AddUser(Input.Email, Input.Email);
                 //var result = await _userManager.CreateAsync(user, Input.Password);
-                var result = await _userService.GetResultRegister(_userManager, user, Input.Password);
+                var result = await _userService.GetResultRegister(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
@@ -89,7 +83,8 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
                     //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userService.SignIn(user);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

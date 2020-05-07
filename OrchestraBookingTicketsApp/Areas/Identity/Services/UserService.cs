@@ -9,7 +9,15 @@ using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 namespace OrchestraBookingTicketsApp.Areas.Identity.Services
 {
     public class UserService 
-    {  
+    {
+        private SignInManager<IdentityUser> _signInManager;
+        private UserManager<IdentityUser> _userManager;
+
+        public UserService(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        {
+            _signInManager = signInManager;
+            _userManager = userManager;
+        }
 
         // Register
         public IdentityUser AddUser(string userName, string email)
@@ -17,21 +25,26 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Services
             return new IdentityUser { UserName = userName, Email = email };
         }
                 
-        public Task<IdentityResult> GetResultRegister(UserManager<IdentityUser> _userManager,IdentityUser user, string password)
+        public Task<IdentityResult> GetResultRegister(IdentityUser user, string password)
         {
            return  _userManager.CreateAsync(user, password);           
         }
 
-        // Login
-        public Task<SignInResult> GetResultLogin(SignInManager<IdentityUser> signInManager, string email, string password, bool rememberMe)
+        public Task SignIn(IdentityUser user)
         {
-            return signInManager.PasswordSignInAsync(email, password, rememberMe, lockoutOnFailure: true);            
+            return _signInManager.SignInAsync(user, isPersistent: false);
+        }
+
+        // Login
+        public Task<SignInResult> GetResultLogin(string email, string password, bool rememberMe)
+        {
+            return _signInManager.PasswordSignInAsync(email, password, rememberMe, lockoutOnFailure: true);            
         }
 
         //Logout
-        public  Task LogOut(SignInManager<IdentityUser> signInManager)
+        public  Task LogOut()
         {
-             return signInManager.SignOutAsync();
+             return _signInManager.SignOutAsync();
         }
     }
 }
