@@ -38,14 +38,14 @@ namespace OrchestraBookingTicketsApp.Controllers
                 return BadRequest("Invalid request received");
             }
         }
-
+        
         [HttpGet]
         public IActionResult DeleteOrchestraHistory(OrchestraHistory orchestraHistory)
         {
             var historyOrchestra = orchestraHistoryService.GetOrchestraHistoryBy(orchestraHistory.OrchestraHistoryId);
             return View(historyOrchestra);
         }
-
+        
         [HttpGet]
         public IActionResult AddOrchestraHistory()
         {

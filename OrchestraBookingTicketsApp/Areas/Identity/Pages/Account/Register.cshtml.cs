@@ -65,10 +65,9 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
-                var user = _userService.AddUser(Input.Email, Input.Email);
+                //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };                
                 //var result = await _userManager.CreateAsync(user, Input.Password);
-                var result = await _userService.GetResultRegister(user, Input.Password);
+                var result = await _userService.GetResultRegister(Input.Email, Input.Email, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
@@ -84,7 +83,8 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
                     //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     //await _signInManager.SignInAsync(user, isPersistent: false);
-                    await _userService.SignIn(user);
+
+                   // await _userService.SignIn(User);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

@@ -75,6 +75,7 @@ namespace OrchestraBookingTicketsApp
                 options.Lockout.MaxFailedAccessAttempts = 3;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(30);
             });
+            
 
             //add repo
             services.AddScoped<IOrchestraRepository, OrchestraRepository>();
@@ -90,7 +91,7 @@ namespace OrchestraBookingTicketsApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<IdentityUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -108,6 +109,8 @@ namespace OrchestraBookingTicketsApp
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            DbSeeder.SeedDb(userManager);
 
             app.UseMvc(routes =>
             {
