@@ -16,6 +16,7 @@ using OrchestraBookingTicketsApp.DataAccess;
 using OrchestraBookingTicketsApp.Abstractions;
 using OrchestraBookingTicketsApp.Repositories;
 using OrchestraBookingTicketsApp.Services;
+using OrchestraBookingTicketsApp.Areas.Identity.Services;
 
 namespace OrchestraBookingTicketsApp
 {
@@ -83,8 +84,8 @@ namespace OrchestraBookingTicketsApp
             services.AddScoped<OrchestraService>();
             services.AddScoped<OrchestraHistoryService>();
             services.AddScoped<LocationService>();
+            services.AddScoped<UserService>();
 
-           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

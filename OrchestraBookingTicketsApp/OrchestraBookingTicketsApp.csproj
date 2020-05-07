@@ -26,8 +26,4 @@
     <None Include="wwwroot\images\back.jpg" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Services\" />
-  </ItemGroup>
-
 </Project>

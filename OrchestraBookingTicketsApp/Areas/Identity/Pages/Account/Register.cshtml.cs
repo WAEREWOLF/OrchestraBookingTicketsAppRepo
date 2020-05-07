@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using OrchestraBookingTicketsApp.Areas.Identity.Services;
 
 namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
 {
@@ -19,16 +20,20 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         //private readonly IEmailSender _emailSender;
+        private  UserService _userService;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            UserService userService
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _userService = userService;
             //_emailSender = emailSender;
         }
 
@@ -66,8 +71,10 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                //var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = _userService.AddUser(Input.Email, Input.Email);
+                //var result = await _userManager.CreateAsync(user, Input.Password);
+                var result = await _userService.GetResultRegister(_userManager, user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
