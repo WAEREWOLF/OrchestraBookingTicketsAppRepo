@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -34,19 +35,21 @@ namespace OrchestraBookingTicketsApp.Controllers
                 return BadRequest("Invalid request received");
             }
         }
-
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult AddOrchestra()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult DeleteOrchestra()
         {
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public IActionResult AddOrchestra([FromForm]AddOrchestraViewModel model)
         {
@@ -57,8 +60,9 @@ namespace OrchestraBookingTicketsApp.Controllers
 
             orchestraService.AddOrchestra(model.Title, model.Date, model.Price);
             return Redirect(Url.Action("Index", "Orchestras"));
-        }        
+        }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public IActionResult DeleteOrchestra(int id)
         {

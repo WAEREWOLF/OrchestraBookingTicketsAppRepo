@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Popup";
+}
+<div class="container">
+    <div class="modal fade" tabindex="-1" id="loginModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Notification</h4>
+                </div>
+                <h4 class="modal-body">
+                    Login successfully!
+                </h4>
+                <p> &emsp; The password and email matches.</p>
+                <div class="modal-footer">
+                    <a type="button" id="btnHideModal" class="btn btn-success" asp-controller="Home" asp-action="Index">
+                        Close
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#loginModal").modal('show');
+    });
+
+    $("#btnHideModal").click(function () {
+        $("#loginModal").modal('hide');
+    });
+
+</script>
