@@ -22,13 +22,8 @@ namespace OrchestraBookingTicketsApp.Areas.Identity.Services
         // Register
         public Task<IdentityResult> GetResultRegister(string userName, string email, string password)
         {
-           var user = new IdentityUser { UserName = userName, Email = email };
-            var result = _userManager.CreateAsync(user, password);           
-            //if (!_userManager.Users.Any(u => u.UserName == userName))
-            //{
-            //    _userManager.AddToRoleAsync(user, "User").Wait();
-            //}
-            return result;
+            var user = new IdentityUser { UserName = userName, Email = email };
+            return _userManager.CreateAsync(user, password); 
         }
 
         public Task SignIn(IdentityUser user)

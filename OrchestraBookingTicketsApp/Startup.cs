@@ -81,6 +81,7 @@ namespace OrchestraBookingTicketsApp
             services.AddScoped<IOrchestraRepository, OrchestraRepository>();
             services.AddScoped<IOrchestraHistoryRepository, OrchestraHistoryRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
+
             //add services
             services.AddScoped<OrchestraService>();
             services.AddScoped<OrchestraHistoryService>();
@@ -110,6 +111,7 @@ namespace OrchestraBookingTicketsApp
 
             app.UseAuthentication();
 
+            // added seeder
             DbSeeder.SeedDb(userManager);
 
             app.UseMvc(routes =>

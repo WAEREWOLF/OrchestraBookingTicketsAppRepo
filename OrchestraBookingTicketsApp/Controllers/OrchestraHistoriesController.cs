@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +17,12 @@ namespace OrchestraBookingTicketsApp.Controllers
     [Authorize(Roles = "User")]
     public class OrchestraHistoriesController : Controller
     {
-        //private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<IdentityUser> userManager;
         private readonly OrchestraHistoryService orchestraHistoryService;
 
-        public OrchestraHistoriesController(OrchestraHistoryService orchestraHistoryService)
+        public OrchestraHistoriesController(OrchestraHistoryService orchestraHistoryService, UserManager<IdentityUser> userManager)
         {
-            //this.userManager = userManager;
+            this.userManager = userManager;
             this.orchestraHistoryService = orchestraHistoryService;
         }
 
@@ -29,7 +30,7 @@ namespace OrchestraBookingTicketsApp.Controllers
         {
             try
             {
-                //var userId = userManager.GetUserId(User);
+                var userIdStr = userManager.GetUserId(User);               
                 var orchestraHistory = orchestraHistoryService.GetOrchestrasHistoryByUserId(1);
                 return View(new OrchestraHistoryViewModel { OrchestraHistories = orchestraHistory });
             }
