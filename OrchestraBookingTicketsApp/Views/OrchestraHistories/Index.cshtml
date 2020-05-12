@@ -45,9 +45,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Rating)
                 </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.OrchestraHistoryId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.OrchestraHistoryId">Details</a> |
+                <td>                    
                     <a asp-action="DeleteOrchestraHistory" asp-route-id="@item.OrchestraHistoryId">Delete</a>                   
                 </td>
             </tr>

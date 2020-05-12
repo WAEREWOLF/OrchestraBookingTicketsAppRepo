@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrchestraBookingTicketsApp.Models;
 
@@ -21,7 +22,7 @@ namespace OrchestraBookingTicketsApp.Controllers
 
             return View();
         }
-
+        [Authorize(Roles = "User")]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
@@ -29,11 +30,15 @@ namespace OrchestraBookingTicketsApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Popup()
         {
             return View();
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
         public ActionResult Gallery()
         {
             ViewBag.Message = "Some of the pictures with Important Philharmonics that hosted our Orchestras";
@@ -48,6 +53,7 @@ namespace OrchestraBookingTicketsApp.Controllers
             return View();
         }
 
+        [Authorize(Roles = "User")]
         public IActionResult BookSeats()
         {
             ViewBag.Message = "Choose an available seat";

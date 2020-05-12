@@ -1,17 +1,41 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Contact";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<h1>Contact</h1>
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/Button.css">
+</head>
+<body>
+
+    <h2>Send e-mail to Admin Anghel Paul:</h2>
+
+    <form action="mailto:apauldavid1@gmail.com; apauldavid2@gmail.com" method="post" enctype="text/plain">
+        First Name:<br>
+        <input class="form-control" type="text" name="First Name"><br>
+        Last Name:<br>
+        <input class="form-control" type="text" name="Last Name"><br>
+        Reply E-mail:<br>
+        <input class="form-control" type="text" name="Reply E-mail"><br>
+        Country:<br>
+        <select name="country" class="countries order-alpha presel-byip " id="countryId">
+            <option value="">Select Country</option>
+        </select><br><br />
+        State:<br />
+        <select name="state" class="states order-alpha" id="stateId">
+            <option value="">Select State</option>
+        </select><br /><br />
+        Comment:<br>
+        <input class="form-control" type="text" rows="10" cols="30" name="comment"><br><br>
+        <input type="submit" class="btn success" value="Send">
+        <input type="reset" class="btn success" value="Reset">
+        <a asp-action="Index"><input type="button" value="Back" class="btn success" /></a>
+    </form>
+</body>
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
