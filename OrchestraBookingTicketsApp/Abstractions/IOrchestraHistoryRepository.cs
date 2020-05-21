@@ -10,5 +10,6 @@ namespace OrchestraBookingTicketsApp.Abstractions
     {
         IEnumerable<OrchestraHistory> GetOrchestrasHistoryByUserId(int userId);
         OrchestraHistory GetOrchestraHistoryById(int orchestraHistoryId);
+        OrchestraHistory GetOrchestraHistoryByUserId(int orchestraHistoryId, int userId);
     }
 }

@@ -55,8 +55,10 @@
                     <input type="submit" class="btn success" value="Details" />
                 </a>         
             </td>
-            <td>
-                <input type="button" value="Book Now" class="btn success" onclick="location.href='@Url.Action("BookSeats", "Home")'" />
+            <td>                
+                <a asp-action="BookSeat" asp-route-id="@item.OrchestraId" asp-controller="Orchestras">
+                    <input type="submit" class="btn btn-info" value="Book Seat" />
+                </a>
             </td>
         </tr>
         }

@@ -1,4 +1,5 @@
-﻿using OrchestraBookingTicketsApp.Abstractions;
+﻿using Microsoft.AspNetCore.Identity;
+using OrchestraBookingTicketsApp.Abstractions;
 using OrchestraBookingTicketsApp.Models;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,15 @@ namespace OrchestraBookingTicketsApp.Services
     public class OrchestraHistoryService
     {
         private IOrchestraHistoryRepository orchestraHistoryRepository;
+        //private readonly UserManager<IdentityUser> userManager;
+        private IOrchestraRepository orchestraRepository;
+        private IUserRepository userRepository;
 
-        public OrchestraHistoryService(IOrchestraHistoryRepository orchestraHistoryRepository)
+        public OrchestraHistoryService(IOrchestraHistoryRepository orchestraHistoryRepository, IOrchestraRepository orchestraRepository, IUserRepository userRepository)
         {
             this.orchestraHistoryRepository = orchestraHistoryRepository;
+            this.userRepository = userRepository;
+            this.orchestraRepository = orchestraRepository;
         }
 
         public IEnumerable<OrchestraHistory> GetOrchestrasHistoryByUserId(int userId)
@@ -21,9 +27,9 @@ namespace OrchestraBookingTicketsApp.Services
             return orchestraHistoryRepository.GetOrchestrasHistoryByUserId(userId);
         }
 
-        public void DeleteOrchestraHistory(int orchestraHistory)
+        public void DeleteOrchestraHistory(int orchestraHistory, int userId)
         {
-            var orchestraHistoryItem = orchestraHistoryRepository.GetOrchestraHistoryById(orchestraHistory);
+            var orchestraHistoryItem = orchestraHistoryRepository.GetOrchestraHistoryByUserId(orchestraHistory, userId);
              orchestraHistoryRepository.Delete(orchestraHistoryItem);
         }
                 
@@ -31,11 +37,39 @@ namespace OrchestraBookingTicketsApp.Services
         public OrchestraHistory GetOrchestraHistoryBy(int orchestraHistoryId)
         {
             return orchestraHistoryRepository.GetOrchestraHistoryById(orchestraHistoryId);           
-        }
+        }    
 
-        public void AddHistoryOrchestra(string status, int seatNumber, int rating)
+        public void AddOrchestraInHistory(int orchestraId, int userId, string status, int seatNumber, int rating)
         {
-            orchestraHistoryRepository.Add(new OrchestraHistory() { Status = status, SeatNumber = seatNumber, Rating = rating});
+            //Guid tripIdGuid = Guid.Empty;
+            //if (!Guid.TryParse(tripId, out tripIdGuid))
+            //{
+            //    throw new Exception("Invalid Guid Format");
+            //}
+
+            //Guid userIdGuid = Guid.Empty;
+            //if (!Guid.TryParse(userId, out userIdGuid))
+            //{
+            //    throw new Exception("Invalid Guid Format");
+            //}
+
+            var orchestra = orchestraRepository.GetOrchestraById(orchestraId);
+            var user = userRepository.GetUserById(userId);
+
+            var orchestraDummyList = new List<Orchestra>
+            {
+                orchestra
+            };
+            //if (orchestra == null)
+            //{
+            //    throw new EntityNotFoundException(tripIdGuid);
+            //}
+
+            //if (user == null)
+            //{
+            //    throw new EntityNotFoundException(userIdGuid);
+            //}
+            orchestraHistoryRepository.Add(new OrchestraHistory() { Status = status, SeatNumber = seatNumber, Rating = rating, User = user, Orchestra = orchestraDummyList });
         }
     }
 }

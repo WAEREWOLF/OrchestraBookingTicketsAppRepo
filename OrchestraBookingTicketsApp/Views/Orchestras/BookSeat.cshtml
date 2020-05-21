@@ -1,0 +1,137 @@
+﻿@model OrchestraBookingTicketsApp.ViewModels.OrchestraModel.BuyTicketViewModel
+@{
+    ViewData["Title"] = "BookSeat";
+}
+
+<h2>BookSeat</h2>
+
+<h1>Select a seat and book your ticket: </h1>
+
+<div class="interior">
+
+    <div class="autocar-seats left">
+        <div class="autocar-row row-1">
+            <div class="seat"><center>1</center></div>
+            <div class="seat"><center>2</center></div>
+            <div class="seat"><center>3</center></div>
+            <div class="seat"><center>4</center></div>
+            <div class="seat"><center>5</center></div>
+            <div class="seat"><center>6</center></div>
+            <div class="seat"><center>7</center></div>
+        </div>
+
+        <div class="autocar-row row-2">
+            <div class="seat"><center>8</center></div>
+            <div class="seat"><center>9</center></div>
+            <div class="seat"><center>10</center></div>
+            <div class="seat"><center>11</center></div>
+            <div class="seat"><center>12</center></div>
+            <div class="seat"><center>13</center></div>
+            <div class="seat"><center>14</center></div>
+        </div>
+    </div>
+
+
+    <div class="autocar-seats right">
+        <div class="autocar-row row-1">
+            <div class="seat"><center>15</center></div>
+            <div class="seat"><center>16</center></div>
+            <div class="seat"><center>17</center></div>
+            <div class="seat"><center>18</center></div>
+            <div class="seat"><center>19</center></div>
+            <div class="seat"><center>20</center></div>
+            <div class="seat"><center>21</center></div>
+        </div>
+
+        <div class="autocar-row row-2">
+            <div class="seat"><center>22</center></div>
+            <div class="seat"><center>23</center></div>
+            <div class="seat"><center>24</center></div>
+            <div class="seat"><center>25</center></div>
+            <div class="seat"><center>26</center></div>
+            <div class="seat"><center>27</center></div>
+            <div class="seat"><center>28</center></div>
+        </div>
+    </div>
+</div>
+
+<form asp-action="BookSeat">
+    <input type="hidden" asp-for="@Model.OrchestraId" />
+    <input type="hidden" asp-for="@Model.SeatNumber" />
+    <input type="submit" value="Buy ticket" class="btn  btn-success" onclick="return buy()" />
+</form>
+<div>
+    <input type="reset" value="Cancel" onclick="return cancel()" class="btn  btn-success" style="margin-left:600px;margin-top:-76px" />
+</div>
+
+<style type='text/css'>
+
+    /* Style the submit button with a specific background color etc */
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 550px;
+        margin-left: 420px;
+    }
+
+        /* When moving the mouse over the submit button, add a darker green color */
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+    input[type=reset] {
+        background-color: #d82323;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-left: 30px;
+    }
+
+        /* When moving the mouse over the submit button, add a darker green color */
+        input[type=reset]:hover {
+            background-color: #bb0e0e;
+        }
+</style>
+
+<link rel="stylesheet" href="~/css/buy_ticket.css" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    $(function () {
+        $("#closeButton").click(function () {
+            window.history.back();
+        });
+    });
+
+    var previous_text = "-1";
+    $(' .autocar-seats .seat').on('click', function () {
+         previous_text = $(this).text();
+        //console.log(previous_text);
+        $(this).attr('data-before', previous_text);
+        // alert($(this).css('backgroundColor'));
+        if ($(this).css('backgroundColor') != "rgb(199, 30, 35)") {
+            $(" .autocar-seats .seat").removeClass("active");
+            $(this).toggleClass('active');
+        }
+        $("#SeatNumber").text(previous_text);
+        $("#SeatNumber").val(previous_text);
+    });
+
+
+    function cancel() {
+        $(" .autocar-seats .seat").removeClass("active");
+    }
+
+    function buy() {
+        if (previous_text == "-1") {
+            alert("Please select a seat first!");
+        }
+    }
+</script>

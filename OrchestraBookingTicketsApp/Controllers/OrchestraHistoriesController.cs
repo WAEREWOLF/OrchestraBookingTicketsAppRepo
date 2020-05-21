@@ -43,14 +43,17 @@ namespace OrchestraBookingTicketsApp.Controllers
         [HttpGet]
         public IActionResult DeleteOrchestraHistory(OrchestraHistory orchestraHistory)
         {
-            var historyOrchestra = orchestraHistoryService.GetOrchestraHistoryBy(orchestraHistory.OrchestraHistoryId);
-            return View(historyOrchestra);
+            //var historyOrchestra = orchestraHistoryService.GetOrchestraHistoryBy(orchestraHistory.OrchestraHistoryId);
+            //return View(historyOrchestra);
+            return View();
+
         }
         
         [HttpGet]
-        public IActionResult AddOrchestraHistory()
+        public IActionResult AddOrchestraHistory(int id)
         {
-            return View();
+            AddOrchestraHistoryViewModel vm = new AddOrchestraHistoryViewModel() { OrchestraId = id };
+            return View(vm);
         }
 
         [HttpPost]
@@ -61,19 +64,14 @@ namespace OrchestraBookingTicketsApp.Controllers
                 return BadRequest();
             }
 
-            orchestraHistoryService.AddHistoryOrchestra(model.Status, model.SeatNumber, model.Rating);
+            orchestraHistoryService.AddOrchestraInHistory(model.OrchestraId, 1, model.Status, model.SeatNumber, model.Rating);
             return Redirect(Url.Action("Index", "OrchestraHistories"));
-
         }
 
         [HttpPost]      
         public IActionResult DeleteOrchestraHistory(int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }           
-            orchestraHistoryService.DeleteOrchestraHistory(id);
+        {                     
+            orchestraHistoryService.DeleteOrchestraHistory(id,1);
             return Redirect(Url.Action("Index", "OrchestraHistories"));
         }
         

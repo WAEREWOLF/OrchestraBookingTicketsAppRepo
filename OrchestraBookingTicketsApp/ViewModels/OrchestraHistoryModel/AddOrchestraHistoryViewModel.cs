@@ -10,5 +10,6 @@ namespace OrchestraBookingTicketsApp.ViewModels.OrchestraHistoryModel
         public string Status { get; set; }
         public int SeatNumber { get; set; }
         public int Rating { get; set; }
+        public int OrchestraId { get; set; }
     }
 }

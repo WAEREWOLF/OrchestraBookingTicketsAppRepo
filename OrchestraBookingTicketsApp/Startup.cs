@@ -81,6 +81,7 @@ namespace OrchestraBookingTicketsApp
             services.AddScoped<IOrchestraRepository, OrchestraRepository>();
             services.AddScoped<IOrchestraHistoryRepository, OrchestraHistoryRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             //add services
             services.AddScoped<OrchestraService>();
