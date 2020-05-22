@@ -4,13 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Available Orchestras</h2>
+<h2>Orchestras</h2>
 <link rel="stylesheet" href="~/css/Button.css">
 <style>
     tr:nth-child(even) {background-color: #c89797;}    
 </style>
-<p>
-    <a asp-action="AddOrchestra">Add Orchestra</a>
+<p>    
+    <a asp-action="AddOrchestra" >
+        <input type="submit" class="btn-success" value="Add Orchestra" />
+    </a>
 </p>
 <table class="table"  BORDERCOLOR=#c89797>
     <thead>
@@ -52,19 +54,20 @@
                 @Html.DisplayFor(modelItem => item.Price)
                 @Html.Label("$")
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrchestraId">Edit</a> |
-                <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">Delete</a>
+            <td>                
+                <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">
+                    <input type="submit" class="btn-danger" value="Delete" />
+                </a>
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.OrchestraId" asp-controller="Locations">
-                    <input type="submit" class="btn success" value="Location" />
+                    <input type="submit" class="btn-warning" value="Location" />
                 </a>
                 <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="LeadArtists">
-                    <input type="submit" class="btn success" value="Lead Artist" />
+                    <input type="submit" class="btn-success" value="Lead Artist" />
                 </a>
                 <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="Instruments">
-                    <input type="submit" class="btn success" value="Instruments" />
+                    <input type="submit" class="btn-info" value="Instruments" />
                 </a>
             </td>
             <td>
