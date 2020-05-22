@@ -39,19 +39,7 @@ namespace OrchestraBookingTicketsApp.Services
         }    
 
         public void AddOrchestraInHistory(int orchestraId, int userId, string status, int seatNumber, int rating)
-        {
-            //Guid tripIdGuid = Guid.Empty;
-            //if (!Guid.TryParse(tripId, out tripIdGuid))
-            //{
-            //    throw new Exception("Invalid Guid Format");
-            //}
-
-            //Guid userIdGuid = Guid.Empty;
-            //if (!Guid.TryParse(userId, out userIdGuid))
-            //{
-            //    throw new Exception("Invalid Guid Format");
-            //}
-
+        {  
             var orchestra = orchestraRepository.GetOrchestraById(orchestraId);
             var user = userRepository.GetUserById(userId);
 
@@ -59,21 +47,12 @@ namespace OrchestraBookingTicketsApp.Services
             {
                 orchestra
             };
-            //if (orchestra == null)
-            //{
-            //    throw new EntityNotFoundException(tripIdGuid);
-            //}
-
-            //if (user == null)
-            //{
-            //    throw new EntityNotFoundException(userIdGuid);
-            //}
+            
             orchestraHistoryRepository.Add(new OrchestraHistory() { Status = status, SeatNumber = seatNumber, Rating = rating, User = user, Orchestra = orchestraDummyList });
         }
 
         public void SaveRating(int userId, int orchestraHistoryId, int rating)
-        {
-            //Guid userIdGuid = Guid.Parse(userId);
+        {            
             var historyTrip = orchestraHistoryRepository.GetOrchestraHistoryByUserId(orchestraHistoryId, userId);
             historyTrip.Rating = rating;
             orchestraHistoryRepository.Update(historyTrip);
