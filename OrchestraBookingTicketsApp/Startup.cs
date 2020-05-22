@@ -82,12 +82,14 @@ namespace OrchestraBookingTicketsApp
             services.AddScoped<IOrchestraHistoryRepository, OrchestraHistoryRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ILeadArtistRepository, LeadArtistRepositorycs>();
 
             //add services
             services.AddScoped<OrchestraService>();
             services.AddScoped<OrchestraHistoryService>();
             services.AddScoped<LocationService>();
             services.AddScoped<UserService>();
+            services.AddScoped<LeadArtistService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

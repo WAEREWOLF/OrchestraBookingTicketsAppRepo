@@ -1,0 +1,40 @@
+﻿@model OrchestraBookingTicketsApp.ViewModels.LeadArtistModel.AddLeadArtistViewModel
+@{
+    ViewData["Title"] = "AddLeadArtist";
+}
+
+<h2>Add Lead Artist</h2>
+
+<link rel="stylesheet" href="~/css/Button.css">
+<form asp-action="AddLeadArtist" method="post">
+
+    <div class="row">
+        <div class="col-2">
+            Artist Name
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="text" asp-for="Name" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Age
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="number" asp-for="Age" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Orchestra ID
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="text" asp-for="OrchestraId" />
+        </div>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn success" asp-route="LeadArtists/Index">Save</button>
+        <input type="button" value="Back" class="btn success" style="float: right;" onclick="location.href='@Url.Action("Details", "Locations")'" />
+    </div>
+</form>

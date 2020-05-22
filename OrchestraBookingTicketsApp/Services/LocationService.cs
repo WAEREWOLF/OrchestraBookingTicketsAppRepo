@@ -9,8 +9,8 @@ namespace OrchestraBookingTicketsApp.Services
 {
     public class LocationService
     {
-        private IOrchestraRepository orchestraRepository;
-        private ILocationRepository locationRepository;
+        private readonly IOrchestraRepository orchestraRepository;
+        private readonly ILocationRepository locationRepository;
 
         public LocationService(IOrchestraRepository orchestraRepository, ILocationRepository locationRepository)
         {

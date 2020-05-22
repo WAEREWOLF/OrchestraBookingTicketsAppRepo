@@ -16,6 +16,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayName("ID")
+            </th>
+            <th>
                 @Html.DisplayName("Title")
             </th>
             <th>
@@ -37,6 +40,9 @@
         {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.OrchestraId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
@@ -48,14 +54,17 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.OrchestraId">Edit</a> |
-                <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">Delete</a>                
+                <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">Delete</a>
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.OrchestraId" asp-controller="Locations">
-                    <input type="submit" class="btn success" value="Details" />
-                </a>         
+                    <input type="submit" class="btn success" value="Location" />
+                </a>
+                <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="LeadArtists">
+                    <input type="submit" class="btn success" value="Lead Artist" />
+                </a>
             </td>
-            <td>                
+            <td>
                 <a asp-action="BookSeat" asp-route-id="@item.OrchestraId" asp-controller="Orchestras">
                     <input type="submit" class="btn btn-info" value="Book Seat" />
                 </a>
