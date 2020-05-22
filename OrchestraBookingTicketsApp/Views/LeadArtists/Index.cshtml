@@ -12,9 +12,9 @@
     }
 </style>
 
+<a asp-action="AddLeadArtist" asp-controller="LeadArtists">Create New</a><br />
 @if (Model != null)
 {
-    <a asp-action="AddLeadArtist" asp-route-id="@Model.OrchestraId" asp-controller="LeadArtists">Create New</a>
     <table class="table" BORDERCOLOR=#c89797>
         <thead>
             <tr>
@@ -49,7 +49,6 @@
 }
 else
 {
-
     <div>
         <b>No Lead Artist found for this Orchestra.</b>
     </div><br />

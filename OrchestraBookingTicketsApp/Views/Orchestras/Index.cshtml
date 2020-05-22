@@ -63,6 +63,9 @@
                 <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="LeadArtists">
                     <input type="submit" class="btn success" value="Lead Artist" />
                 </a>
+                <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="Instruments">
+                    <input type="submit" class="btn success" value="Instruments" />
+                </a>
             </td>
             <td>
                 <a asp-action="BookSeat" asp-route-id="@item.OrchestraId" asp-controller="Orchestras">

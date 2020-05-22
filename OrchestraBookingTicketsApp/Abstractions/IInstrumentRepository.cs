@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrchestraBookingTicketsApp.Abstractions
 {
-    public interface IInstrumentRepository
+    public interface IInstrumentRepository : IRepository<Instrument>
     {
         IEnumerable<Instrument> GetInstrumentsByOrchestraId(int orchestraId);
     }

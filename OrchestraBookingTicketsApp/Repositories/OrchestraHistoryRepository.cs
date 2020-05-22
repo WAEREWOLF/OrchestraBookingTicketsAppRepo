@@ -40,6 +40,22 @@ namespace OrchestraBookingTicketsApp.Repositories
                                                                 .Include(pt => pt.Orchestra)
                                                                 .Where(h => h.User.UserId == userId)
                                                                 .AsEnumerable();
+            foreach (var item in orchestraHistory)
+            {
+                foreach(var orchestra in item.Orchestra)
+                {
+                    if (orchestra.Date < DateTimeOffset.Now)
+                    {
+                        item.Status = "Completed";                    
+                    }
+                    else
+                    {
+                        item.Status = "In progress";                    
+                    }
+                }
+            }
+            dbContext.SaveChanges();
+
             return orchestraHistory;
         }
     }
