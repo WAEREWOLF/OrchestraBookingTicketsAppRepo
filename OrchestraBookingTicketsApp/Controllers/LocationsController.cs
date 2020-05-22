@@ -55,13 +55,13 @@ namespace OrchestraBookingTicketsApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddLocation([FromForm]AddLocationViewModel model, int id)
+        public IActionResult AddLocation([FromForm]AddLocationViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }            
-            locationService.AddLocation(model.City, model.Country, model.Address, id);
+            locationService.AddLocation(model.City, model.Country, model.Address, model.OrchestraId);
             return Redirect(Url.Action("Index", "Locations"));
         }
     }

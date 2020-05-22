@@ -31,7 +31,15 @@
             <input class="form-control" type="text" asp-for="Address" />
         </div>
     </div>
-    
+    <div class="row">
+        <div class="col-2">
+            Orchestra Id
+        </div>
+        <div class="col-10">
+            <input class="form-control" type="number" asp-for="OrchestraId" />            
+        </div>
+    </div>
+
     <br />
     <div>
         <button type="submit" class="btn success" asp-route="Locations/Details">Save</button>
