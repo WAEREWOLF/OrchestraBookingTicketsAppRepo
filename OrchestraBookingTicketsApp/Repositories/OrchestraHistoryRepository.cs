@@ -18,7 +18,9 @@ namespace OrchestraBookingTicketsApp.Repositories
 
         public OrchestraHistory GetOrchestraHistoryById(int orchestraHistoryId)
         {
-            var orchestraHistory = dbContext.OrchestraHistories.Where(h => h.OrchestraHistoryId == orchestraHistoryId).SingleOrDefault();
+            var orchestraHistory = dbContext.OrchestraHistories .Include(pt => pt.Orchestra)
+                                                                .Where(h => h.OrchestraHistoryId == orchestraHistoryId)
+                                                                .SingleOrDefault();
             return orchestraHistory;
         }
 
@@ -34,8 +36,10 @@ namespace OrchestraBookingTicketsApp.Repositories
 
         public IEnumerable<OrchestraHistory> GetOrchestrasHistoryByUserId(int userId)
         {
-            var orchestraHistory = dbContext.OrchestraHistories.Include(pt => pt.User)                                                  
-                                                                .Where(h => h.User.UserId == userId).AsEnumerable();
+            var orchestraHistory = dbContext.OrchestraHistories.Include(pt => pt.User)
+                                                                .Include(pt => pt.Orchestra)
+                                                                .Where(h => h.User.UserId == userId)
+                                                                .AsEnumerable();
             return orchestraHistory;
         }
     }

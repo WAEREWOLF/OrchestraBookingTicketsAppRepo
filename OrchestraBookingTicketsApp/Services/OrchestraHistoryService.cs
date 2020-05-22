@@ -10,8 +10,7 @@ namespace OrchestraBookingTicketsApp.Services
 {
     public class OrchestraHistoryService
     {
-        private IOrchestraHistoryRepository orchestraHistoryRepository;
-        //private readonly UserManager<IdentityUser> userManager;
+        private IOrchestraHistoryRepository orchestraHistoryRepository;       
         private IOrchestraRepository orchestraRepository;
         private IUserRepository userRepository;
 
@@ -70,6 +69,14 @@ namespace OrchestraBookingTicketsApp.Services
             //    throw new EntityNotFoundException(userIdGuid);
             //}
             orchestraHistoryRepository.Add(new OrchestraHistory() { Status = status, SeatNumber = seatNumber, Rating = rating, User = user, Orchestra = orchestraDummyList });
+        }
+
+        public void SaveRating(int userId, int orchestraHistoryId, int rating)
+        {
+            //Guid userIdGuid = Guid.Parse(userId);
+            var historyTrip = orchestraHistoryRepository.GetOrchestraHistoryByUserId(orchestraHistoryId, userId);
+            historyTrip.Rating = rating;
+            orchestraHistoryRepository.Update(historyTrip);
         }
     }
 }

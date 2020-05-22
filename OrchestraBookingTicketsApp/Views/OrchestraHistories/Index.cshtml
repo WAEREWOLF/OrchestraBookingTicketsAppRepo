@@ -10,12 +10,15 @@
     tr:nth-child(even) {
         background-color: #c89797;
     }
-</style>
-<p>
 
-<p>
-    <a asp-action="AddOrchestraHistory">Create New</a>
-</p>
+    .checked {
+        color: dodgerblue;
+        border-color: black;
+        border: thick;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <table class="table" BORDERCOLOR=#c89797>
     <thead>
         <tr>
@@ -28,27 +31,54 @@
             <th>
                 @Html.DisplayName("Rating")
             </th>
-            <th></th>          
-            
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.OrchestraHistories)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SeatNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
-                </td>
-                <td>                    
-                    <a asp-action="DeleteOrchestraHistory" asp-route-id="@item.OrchestraHistoryId">Delete</a>                   
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                <form asp-controller="OrchestraHistories" asp-action="SaveRating" method="post">
+                    <input type="hidden" asp-for="@item.OrchestraHistoryId" />
+                    <select asp-for="@item.Rating">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <script>
+                         function GetSelectedValue() {
+                             var e = document.getElementById("rating");
+                             var result = e.options[e.selectedIndex].value;
+                             @item.Rating = result;                             
+                         }
+                    </script>
+
+                    <span class="fa fa-star checked">&ensp;</span>
+                    <button class="btn-info" type="submit">Rate</button>
+                </form>
+
+            </td>
+            <td>               
+                <a asp-action="DeleteOrchestraHistory" asp-route-id="@item.OrchestraHistoryId">
+                    <input type="submit" class="btn success" value="Delete" />
+                </a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

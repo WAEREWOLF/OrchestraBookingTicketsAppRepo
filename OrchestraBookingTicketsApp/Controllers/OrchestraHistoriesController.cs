@@ -74,6 +74,14 @@ namespace OrchestraBookingTicketsApp.Controllers
             orchestraHistoryService.DeleteOrchestraHistory(id,1);
             return Redirect(Url.Action("Index", "OrchestraHistories"));
         }
-        
+
+        [HttpPost]
+        public IActionResult SaveRating([FromForm(Name = "item.OrchestraHistoryId")] int OrchestraId, [FromForm(Name = "item.Rating")] int rating)
+        {
+            var userId = userManager.GetUserId(User);
+            orchestraHistoryService.SaveRating(1, OrchestraId, rating);
+            return RedirectToAction("Index");
+        }
+
     }
 }
