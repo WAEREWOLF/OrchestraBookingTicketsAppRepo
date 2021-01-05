@@ -11,8 +11,10 @@
         background-color: #c89797;
     }
 </style>
-
-<a asp-action="AddLeadArtist" asp-controller="LeadArtists">Create New</a><br />
+@if (User.IsInRole("Administrator"))
+{
+    <a asp-action="AddLeadArtist" asp-controller="LeadArtists">Create New</a><br />
+}
 @if (Model != null)
 {
     <table class="table" BORDERCOLOR=#c89797>

@@ -12,7 +12,10 @@
         background-color: #c89797;
     }
 </style>
-<a asp-action="AddLocation" asp-controller="Locations">Create New</a>
+@if (User.IsInRole("Administrator"))
+{
+    <a asp-action="AddLocation" asp-controller="Locations">Create New</a>
+}
 <table class="table" BORDERCOLOR=#c89797>
     <thead>
         <tr>
@@ -41,10 +44,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
                 </td>
-                <td>
-                    <a asp-action="AddLocation" asp-route-id="@item.OrchestraId" asp-controller="Locations" >Create New</a>
-                </td>
-                
             </tr>
         }
     </tbody>

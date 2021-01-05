@@ -11,9 +11,12 @@
         background-color: #c89797;
     }
 </style>
-<p>
-    <a asp-action="AddInstrument" >Create New</a>
-</p>
+@if (User.IsInRole("Administrator"))
+{
+   <p>
+      <a asp-action="AddInstrument" >Create New</a>
+   </p>
+}
 <table class="table" BORDERCOLOR=#c89797>
     <thead>
         <tr>
@@ -23,8 +26,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Type)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Orchestra)
+            <th>                
             </th>
             <th></th>
         </tr>
@@ -38,8 +40,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Orchestra.OrchestraId)
+            <td>               
             </td>            
         </tr>
 }

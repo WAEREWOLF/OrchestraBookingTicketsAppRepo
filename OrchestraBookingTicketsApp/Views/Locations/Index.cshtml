@@ -5,9 +5,12 @@
 }
 
 <h2>All locations</h2>
-<p>
-    <a asp-action="AddLocation">Add Location</a>
-</p>
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        <a asp-action="AddLocation">Add Location</a>
+    </p>
+}
 
 <link rel="stylesheet" href="~/css/Button.css">
 <style>
@@ -26,7 +29,7 @@
             </th>
             <th>
                 @Html.DisplayName("AddressQ")
-            </th>          
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -41,11 +44,11 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Address)
-                </td>                
+                </td>
             </tr>
         }
     </tbody>
 </table>
 <div>
-<input type="button" value="Back" class="btn success" onclick="location.href='@Url.Action("Index", "Orchestras")'" />
+    <input type="button" value="Back" class="btn success" onclick="location.href='@Url.Action("Index", "Orchestras")'" />
 </div>
