@@ -81,7 +81,7 @@ namespace OrchestraBookingTicketsApp.Controllers
 
         //Added new
 
-        //[Authorize(Roles = "User, Administrator")]
+        [Authorize(Roles = "User, Administrator")]
         [HttpGet]
         public IActionResult BookSeat(int id)
         {
@@ -94,7 +94,7 @@ namespace OrchestraBookingTicketsApp.Controllers
             return View(buyVm);
         }
 
-        //[Authorize(Roles = "User")]
+        [Authorize(Roles = "User")]
         [HttpPost]
         public IActionResult BookSeat([FromForm] BuyTicketViewModel Vm)
         {

@@ -54,16 +54,19 @@
                 @Html.DisplayFor(modelItem => item.Price)
                 @Html.Label("$")
             </td>
-            <td>                
-                <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">
-                    <input type="submit" class="btn-danger" value="Delete" />
-                </a>
-            </td>
+            @if (User.IsInRole("Administrator"))
+            {
+                <td>                
+                    <a asp-action="DeleteOrchestra" asp-route-id="@item.OrchestraId">
+                        <input type="submit" class="btn-danger" value="Delete" />
+                    </a>
+                </td>
+            }
             <td>
                 <a asp-action="Details" asp-route-id="@item.OrchestraId" asp-controller="Locations">
                     <input type="submit" class="btn-warning" value="Location" />
                 </a>
-                <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="LeadArtists">
+               <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="LeadArtists">
                     <input type="submit" class="btn-success" value="Lead Artist" />
                 </a>
                 <a asp-action="Index" asp-route-id="@item.OrchestraId" asp-controller="Instruments">

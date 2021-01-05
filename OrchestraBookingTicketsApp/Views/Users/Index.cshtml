@@ -4,11 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Users informations</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<link rel="stylesheet" href="~/css/Button.css">
+<style>
+    tr:nth-child(even) {
+        background-color: #c89797;
+    }
+</style>
 <table class="table">
     <thead>
         <tr>
@@ -28,26 +31,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UserId">
+                        <input type="submit" class="btn-warning" value="Edit" />
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.UserId">
+                        <input type="submit" class="btn-info" value="Details" />
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.UserId">
+                        <input type="submit" class="btn-danger" value="Delete" />
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
